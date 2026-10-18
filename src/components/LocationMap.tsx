@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Briefcase, Building2, Factory, GraduationCap, MapPin, Navigation, Plane, type LucideIcon } from "lucide-react";
+import { images } from "../assets/images";
 import { project, proximity, type ProximityCategory, type ProximityPoint } from "../data/content";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
@@ -109,6 +110,7 @@ function StylisedMap({ points, hovered }: { points: ProximityPoint[]; hovered: s
 export default function LocationMap() {
   const [filter, setFilter] = useState<(typeof categories)[number]>("All");
   const [hovered, setHovered] = useState<string | null>(null);
+  const [panoReady, setPanoReady] = useState(false);
   const visible = filter === "All" ? proximity : proximity.filter((p) => p.category === filter);
 
   return (
@@ -127,13 +129,30 @@ export default function LocationMap() {
         <div className="mt-10 sm:mt-14">
           <Reveal className="relative aspect-[4/5] overflow-hidden border border-gold-400/25 bg-navy-950 sm:aspect-video">
             <iframe
-              src="https://kuula.co/share/5Cdg4/collection/7cx74?logo=1&info=0&fs=1&vr=1&zoom=1&autorotate=0.36&thumbs=1"
+              src="https://kuula.co/share/collection/7cx74?logo=1&info=0&fs=1&vr=1&zoom=1&autorotate=0.36&thumbs=1"
               title={`${project.name} — 360° panoramic view`}
               className="absolute inset-0 h-full w-full border-0"
               allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
               allowFullScreen
               loading="lazy"
+              // Kuula keeps fetching the panorama after its page loads — hold the cover a moment longer
+              onLoad={() => setTimeout(() => setPanoReady(true), 1500)}
             />
+            <div
+              aria-hidden={panoReady}
+              className={`absolute inset-0 flex flex-col items-center justify-center gap-4 transition-opacity duration-700 ${
+                panoReady ? "pointer-events-none opacity-0" : "opacity-100"
+              }`}
+            >
+              {images.layoutRender.src && (
+                <img src={images.layoutRender.src} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40 blur-sm" />
+              )}
+              <div className="absolute inset-0 bg-navy-950/50" />
+              <span className="relative h-10 w-10 animate-spin rounded-full border-2 border-gold-400/25 border-t-gold-300 motion-reduce:animate-none" />
+              <p role="status" className="relative text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-200">
+                Loading 360° view…
+              </p>
+            </div>
             <span className="pointer-events-none absolute left-0 top-0 bg-navy-950/80 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-200">
               360° view · Drag to explore
             </span>
