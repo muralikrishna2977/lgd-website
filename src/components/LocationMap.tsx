@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { Briefcase, Building2, Factory, GraduationCap, MapPin, Navigation, Plane, type LucideIcon } from "lucide-react";
-import { images } from "../assets/images";
 import { project, proximity, type ProximityCategory, type ProximityPoint } from "../data/content";
-import LayoutPlan from "./LayoutPlan";
 import SectionHeading from "./ui/SectionHeading";
-import SmartImage from "./ui/SmartImage";
 import Reveal from "./ui/Reveal";
 
 const categoryIcon: Record<ProximityCategory, LucideIcon> = {
@@ -127,28 +124,19 @@ export default function LocationMap() {
           />
         </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:mt-14 [&>*]:min-w-0 lg:grid-cols-[1.25fr_1fr]">
-          <Reveal className="border border-gold-400/25 bg-navy-800 p-3">
-            <div data-scroll-x className="-mx-3 overflow-x-auto px-3 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0">
-              <div className="min-w-[600px] sm:min-w-0">
-                <LayoutPlan />
-              </div>
-            </div>
-            <p className="mt-3 px-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-gold-300 sm:hidden">
-              ← Swipe to see the full layout →
-            </p>
-            <p className="mt-3 px-1 text-[11px] uppercase tracking-[0.16em] text-white/45">
-              Illustrative layout · refer to the DTCP-approved plan for plot details
-            </p>
-          </Reveal>
-          <Reveal delay={120} className="flex flex-col gap-6">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <SmartImage image={images.layoutRender} tone="dark" className="h-full w-full object-cover" />
-              <span className="absolute bottom-0 left-0 bg-navy-950/80 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-200">
-                Aerial view · Entrance &amp; M30 road
-              </span>
-            </div>
-            <SmartImage image={images.masterPlan} tone="dark" className="min-h-[140px] w-full flex-1" />
+        <div className="mt-10 sm:mt-14">
+          <Reveal className="relative aspect-[4/5] overflow-hidden border border-gold-400/25 bg-navy-950 sm:aspect-video">
+            <iframe
+              src="https://kuula.co/share/5Cdg4/collection/7cx74?logo=1&info=0&fs=1&vr=1&zoom=1&autorotate=0.36&thumbs=1"
+              title={`${project.name} — 360° panoramic view`}
+              className="absolute inset-0 h-full w-full border-0"
+              allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+              allowFullScreen
+              loading="lazy"
+            />
+            <span className="pointer-events-none absolute left-0 top-0 bg-navy-950/80 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-200">
+              360° view · Drag to explore
+            </span>
           </Reveal>
         </div>
 

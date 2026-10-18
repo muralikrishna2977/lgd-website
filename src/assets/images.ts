@@ -33,7 +33,7 @@ export const images = {
     placeholder: "LGD Ganesha / sunrise logo (transparent PNG)",
   },
   siriSampadaLogo: {
-    src: null, // e.g. asset("logos/siri-sampada.png")
+    src: asset("logos/siri-sampada.webp"), // white wordmark on navy background
     alt: "Siri Sampada logo",
     placeholder: "Siri Sampada logo",
   },
