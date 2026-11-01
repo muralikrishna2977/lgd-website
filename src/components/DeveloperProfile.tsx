@@ -28,7 +28,7 @@ export default function DeveloperProfile() {
               <SmartImage image={images.lgdBoard} tone="dark" className="h-full w-full object-cover" />
             </div>
             <div className="flex flex-1 flex-col p-6 sm:p-10">
-              <p className="text-[11px] font-semibold uppercase tracking-luxe text-gold-300">The Developer</p>
+              <p className="text-[11px] font-semibold uppercase tracking-luxe text-gold-300">Marketing &amp; Sales</p>
               <h3 className="mt-1 font-serif text-3xl font-medium">{lgd.name}</h3>
               <p className="mt-6 text-[15px] leading-[1.85] text-white/70">{lgd.text}</p>
             </div>

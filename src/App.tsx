@@ -4,7 +4,7 @@ import About from "./components/About";
 import LocationMap from "./components/LocationMap";
 import AmenitiesGrid from "./components/AmenitiesGrid";
 import DeveloperProfile from "./components/DeveloperProfile";
-import ContactForm from "./components/ContactForm";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import MobileActionBar from "./components/MobileActionBar";
 
@@ -24,7 +24,7 @@ export default function App() {
         <LocationMap />
         <AmenitiesGrid />
         <DeveloperProfile />
-        <ContactForm />
+        <Contact />
       </main>
       <Footer />
       <MobileActionBar />

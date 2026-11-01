@@ -109,7 +109,7 @@ export const developer = {
   eyebrow: "The Developers",
   lgd: {
     name: "Lakshmi Gayathri Developers",
-    text: "Lakshmi Gayathri Developers brings Golden Pride to Jadcherla — a project founded on the belief that a home begins with land you can trust. Every plot is planned, approved and delivered with clarity, so families can build their future on firm ground.",
+    text: "Golden Pride is marketed and sold by Lakshmi Gayathri Developers. Founded on the belief that a home begins with land you can trust, the team guides every family with clarity, so they can build their future on firm ground.",
     // TODO(brochure): add LGD’s own background / leadership if the brochure includes it.
   },
   siriSampada: {
@@ -125,21 +125,18 @@ export const contact = {
   // TODO(brochure): replace with the exact address, phone and email from the brochure.
   addressLines: [
     "Lakshmi Gayathri Developers",
-    "[Office address line 1]",
-    "[Office address line 2]",
-    "[City], Telangana – [PIN]",
+    "Door No. 16-2-67/1, 4th Floor, CBCID Colony",
+    "near Metro pillar A664, Hyder Nagar",
+    "Hyderabad, Telangana – 500085",
   ],
-  siteAddress: "Golden Pride, Bhureddypalli, Jadcherla, Telangana (on NH 44)",
-  phone: "+91 00000 00000",
-  // TODO(brochure): WhatsApp number — country code + number, digits only (e.g. "919876543210")
-  whatsapp: "9346575927",
-  email: "sales@example.com",
+  siteAddress: "Golden Pride, Bhureddypalli, Jadcherla, Telangana (on NH 44, Banglore Highway)",
+  phone: "+91 86390 74102",
+  // WhatsApp number — country code + number, digits only
+  whatsapp: "8639074102",
+  email: "lgdevelopers.in@gmail.com",
   hours: "Site visits: Daily, 9:00 AM – 6:00 PM",
-  plotSizes: [
-    "Any size",
-    // TODO(brochure): replace with actual plot sizes in sq. yards
-    "150 – 200 sq. yd",
-    "200 – 300 sq. yd",
-    "300+ sq. yd",
-  ],
 };
+
+const whatsappText = encodeURIComponent(`Hi, I'm interested in ${project.name} plots at ${project.location}.`);
+
+export const whatsappUrl = `https://wa.me/${contact.whatsapp}?text=${whatsappText}`;

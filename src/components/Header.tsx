@@ -40,12 +40,13 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-site items-center justify-between px-5 sm:px-8">
         {/* Logo + title, left-aligned */}
-        <a href="#home" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <KeyholeLogo className="h-11 w-auto" />
-          <span className="flex flex-col leading-none">
+        <a href="#home" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
+          <KeyholeLogo className="h-11 w-auto shrink-0" />
+          <span className="flex min-w-0 flex-col leading-none">
             <span className="font-serif text-2xl font-semibold tracking-wide text-white">{project.name}</span>
-            <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-gold-300">
-              by {project.developer}
+            <span className="mt-1 text-[10px] font-medium uppercase leading-[1.3] tracking-[0.1em] text-gold-300 sm:tracking-[0.16em]">
+              <span className="block">Marketing and sales by</span>
+              <span className="block">{project.developer}</span>
             </span>
           </span>
         </a>

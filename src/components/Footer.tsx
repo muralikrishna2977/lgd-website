@@ -33,13 +33,9 @@ export default function Footer() {
         </div>
 
         {/* Developer logos */}
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-luxe text-white/40">A project by</p>
-          <div className="mt-5 flex items-center gap-4">
-            <SmartImage image={images.lgdLogo} tone="dark" className="h-16 w-auto object-contain" compact="LGD logo" />
-            <SmartImage image={images.siriSampadaLogo} tone="dark" className="h-16 w-28 object-contain" compact="Siri Sampada logo" />
-          </div>
-          <p className="mt-4 text-sm text-white/60">{project.developer}</p>
+        <div className="flex items-center gap-4">
+          <SmartImage image={images.lgdLogo} tone="dark" className="h-16 w-auto object-contain" compact="LGD logo" />
+          <SmartImage image={images.siriSampadaLogo} tone="dark" className="h-16 w-28 object-contain" compact="Siri Sampada logo" />
         </div>
 
         {/* Links */}
