@@ -50,7 +50,7 @@ export default function Contact() {
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" aria-hidden />
                 <div>
                   <p className={label}>Call</p>
-                  <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="mt-2 block text-white/80 hover:text-gold-300">
+                  <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="mt-1 block py-1.5 text-lg text-white hover:text-gold-300">
                     {contact.phone}
                   </a>
                 </div>
@@ -59,7 +59,7 @@ export default function Contact() {
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" aria-hidden />
                 <div>
                   <p className={label}>Email</p>
-                  <a href={`mailto:${contact.email}`} className="mt-2 block text-white/80 hover:text-gold-300">
+                  <a href={`mailto:${contact.email}`} className="mt-1 block break-all py-1.5 text-white/80 hover:text-gold-300">
                     {contact.email}
                   </a>
                 </div>
@@ -87,8 +87,10 @@ export default function Contact() {
             <span className="mt-3 max-w-sm text-balance text-[15px] leading-relaxed text-white/65">
               Tap to send us a message and our team will get back to you.
             </span>
-            <span className="mt-8 bg-gold-400 px-9 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-navy-950 transition group-hover:bg-gold-300">
-              Send a message
+            <span className="wa-breathe mt-8 inline-flex">
+              <span className="wa-btn rounded-full px-9 py-4 text-base font-bold">
+              Chat on WhatsApp
+              </span>
             </span>
           </a>
         </Reveal>

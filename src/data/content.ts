@@ -129,10 +129,10 @@ export const contact = {
     "near Metro pillar A664, Hyder Nagar",
     "Hyderabad, Telangana – 500085",
   ],
-  siteAddress: "Golden Pride, Bhureddypalli, Jadcherla, Telangana (on NH 44, Banglore Highway)",
+  siteAddress: "Golden Pride, Bhureddypalli, Jadcherla, Telangana (on NH 44, Bangalore Highway)",
   phone: "+91 86390 74102",
   // WhatsApp number — country code + number, digits only
-  whatsapp: "8639074102",
+  whatsapp: "918639074102",
   email: "lgdevelopers.in@gmail.com",
   hours: "Site visits: Daily, 9:00 AM – 6:00 PM",
 };

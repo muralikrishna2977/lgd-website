@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Phone, Send } from "lucide-react";
+import { Phone } from "lucide-react";
 import { contact, whatsappUrl } from "../data/content";
 import WhatsAppIcon from "./ui/WhatsAppIcon";
 
 /**
- * Sticky Call / WhatsApp / Enquire bar for phones (hidden from lg up).
+ * Sticky Call / WhatsApp bar for phones (hidden from lg up).
  * Slides in once the visitor scrolls past the top of the hero.
  */
 export default function MobileActionBar() {
@@ -35,14 +35,10 @@ export default function MobileActionBar() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${item} border-x border-white/10 text-white active:bg-white/10`}
+          className={`${item} !flex-[2] bg-[#1DA851] text-white active:bg-[#178F45]`}
         >
-          <WhatsAppIcon className="h-5 w-5 text-gold-300" />
-          WhatsApp
-        </a>
-        <a href="#contact" className={`${item} bg-gold-400 text-navy-950 active:bg-gold-300`}>
-          <Send className="h-5 w-5" aria-hidden />
-          Enquire
+          <WhatsAppIcon className="h-6 w-6" />
+          Chat on WhatsApp
         </a>
       </div>
     </nav>

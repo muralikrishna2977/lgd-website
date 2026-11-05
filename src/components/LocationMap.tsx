@@ -15,7 +15,12 @@ const categoryIcon: Record<ProximityCategory, LucideIcon> = {
 
 const iconFor = (p: ProximityPoint): LucideIcon => (/airport/i.test(p.name) ? Plane : categoryIcon[p.category]);
 
-const categories: ("All" | ProximityCategory)[] = ["All", "IT Parks", "Industries", "SEZs", "Education", "Connectivity"];
+const allCategories: ProximityCategory[] = ["IT Parks", "Industries", "SEZs", "Education", "Connectivity"];
+
+// Entries still waiting on brochure details ("[… — from brochure]") stay off the live page.
+const places = proximity.filter((p) => !p.name.startsWith("["));
+const categories: ("All" | ProximityCategory)[] = ["All", ...allCategories.filter((c) => places.some((p) => p.category === c))];
+const known = (v?: string) => (v && v !== "TBC" ? v : null);
 
 // Golden Pride's position on the stylised map (% of width / height)
 const SITE = { x: 54, y: 52 };
@@ -111,7 +116,7 @@ export default function LocationMap() {
   const [filter, setFilter] = useState<(typeof categories)[number]>("All");
   const [hovered, setHovered] = useState<string | null>(null);
   const [panoReady, setPanoReady] = useState(false);
-  const visible = filter === "All" ? proximity : proximity.filter((p) => p.category === filter);
+  const visible = filter === "All" ? places : places.filter((p) => p.category === filter);
 
   return (
     <section id="location" className="relative overflow-hidden bg-navy-900 py-16 sm:py-24 lg:py-32 text-white sm:py-32">
@@ -127,7 +132,7 @@ export default function LocationMap() {
         </Reveal>
 
         <div className="mt-10 sm:mt-14">
-          <Reveal className="relative aspect-[4/5] overflow-hidden border border-gold-400/25 bg-navy-950 sm:aspect-video">
+          <Reveal className="relative aspect-square overflow-hidden border border-gold-400/25 bg-navy-950 sm:aspect-video">
             <iframe
               src="https://kuula.co/share/collection/7cx74?logo=1&info=0&fs=1&vr=1&zoom=1&autorotate=0.36&thumbs=1"
               title={`${project.name} — 360° panoramic view`}
@@ -214,8 +219,8 @@ export default function LocationMap() {
                           <span className="text-[11px] uppercase tracking-[0.14em] text-white/40">{p.category}</span>
                         </span>
                         <span className="text-right">
-                          <span className="block font-serif text-2xl text-gold-300">{p.distance}</span>
-                          {p.time && <span className="text-[11px] text-white/45">{p.time}</span>}
+                          {known(p.distance) && <span className="block font-serif text-2xl text-gold-300">{p.distance}</span>}
+                          {known(p.time) && <span className="text-[11px] text-white/45">{p.time}</span>}
                         </span>
                       </button>
                     </li>

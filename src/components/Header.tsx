@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { navLinks, project } from "../data/content";
+import { navLinks, project, whatsappUrl } from "../data/content";
 import KeyholeLogo from "./ui/KeyholeLogo";
+import WhatsAppIcon from "./ui/WhatsAppIcon";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -64,21 +65,35 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#contact"
-            className="border border-gold-400 bg-gold-400 px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-950 transition hover:bg-transparent hover:text-gold-300"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-full bg-[#1DA851] px-5 py-2.5 text-[13px] font-bold text-white transition hover:bg-[#178F45]"
           >
-            Enquire Now
+            <WhatsAppIcon className="h-5 w-5" />
+            WhatsApp
           </a>
         </nav>
 
-        <button
-          className="text-white lg:hidden"
-          onClick={() => setOpen((o) => !o)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
-        </button>
+        <div className="flex shrink-0 items-center gap-4 lg:hidden">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp"
+            className="hidden h-10 w-10 items-center justify-center rounded-full bg-[#1DA851] text-white min-[360px]:flex"
+          >
+            <WhatsAppIcon className="h-6 w-6" />
+          </a>
+          <button
+            className="-m-2 p-2 text-white"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

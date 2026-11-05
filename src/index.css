@@ -24,6 +24,94 @@
   }
 }
 
+/* ── WhatsApp call-to-action ────────────────────────────────
+   .wa-btn     raised green button: gradient, top highlight, 3D bottom edge,
+               shadow + glow on every side, sweeping shine, press-down on tap
+   .wa-breathe wrapper that gently grows and shrinks, always
+   .wa-ring    green ring that ripples out behind the button            */
+@layer components {
+  .wa-btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: #fff;
+    background: linear-gradient(180deg, #3ee388 0%, #22bf5c 42%, #179c48 100%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.18),
+      0 5px 0 #0d6a30,
+      0 0 0 4px rgba(37, 211, 102, 0.2),
+      0 0 24px 4px rgba(0, 0, 0, 0.5),
+      0 0 40px 10px rgba(37, 211, 102, 0.45);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.2s ease;
+  }
+  .wa-btn:hover {
+    filter: brightness(1.08) saturate(1.1);
+  }
+  .wa-btn:active {
+    transform: translateY(4px);
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+      0 1px 0 #0d6a30,
+      0 0 0 4px rgba(37, 211, 102, 0.25),
+      0 0 18px 3px rgba(0, 0, 0, 0.45),
+      0 0 34px 8px rgba(37, 211, 102, 0.5);
+  }
+  /* shine sweeping across the face of the button */
+  .wa-btn::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: -70%;
+    width: 45%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: skewX(-20deg);
+    animation: wa-shine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .wa-breathe {
+    animation: wa-breathe 1.6s ease-in-out infinite;
+  }
+  .wa-ring {
+    animation: wa-ring 1.6s ease-out infinite;
+  }
+}
+
+@keyframes wa-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+@keyframes wa-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.15, 1.6);
+    opacity: 0;
+  }
+}
+@keyframes wa-shine {
+  0%,
+  55% {
+    left: -70%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

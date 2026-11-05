@@ -41,10 +41,10 @@ export default function Footer() {
         {/* Links */}
         <nav aria-label="Footer">
           <p className="text-[11px] font-semibold uppercase tracking-luxe text-white/40">Explore</p>
-          <ul className="mt-5 grid grid-cols-2 gap-y-2.5 text-sm">
+          <ul className="mt-3 grid grid-cols-2 text-sm">
             {navLinks.map((l) => (
               <li key={l.id}>
-                <a href={`#${l.id}`} className="text-white/70 transition hover:text-gold-300">
+                <a href={`#${l.id}`} className="inline-block py-2.5 text-white/70 transition hover:text-gold-300">
                   {l.label}
                 </a>
               </li>
